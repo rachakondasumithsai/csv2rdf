@@ -1,0 +1,1 @@
+java -jar target\csv2rdf-0.0.1-SNAPSHOT-shaded.jar

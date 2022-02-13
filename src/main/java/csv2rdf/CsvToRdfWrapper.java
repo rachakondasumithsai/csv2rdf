@@ -87,7 +87,7 @@ public class CsvToRdfWrapper {
 	    try (
 	    		InputStream in = Main.class.getResourceAsStream(resourcePath);
 	    		BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8), BUFFER_SIZE);
-	    		OutputStream out = new FileOutputStream("target/output-model.ttl");
+	    		OutputStream out = new FileOutputStream("output-model.ttl");
 	    		) {
 	        m.read(br, base, readLang);
 	        m.setNsPrefix(prefix, uri);
