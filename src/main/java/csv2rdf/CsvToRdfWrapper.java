@@ -1,9 +1,11 @@
 package csv2rdf;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.jena.propertytable.lang.CSV2RDF;
@@ -85,10 +87,11 @@ public class CsvToRdfWrapper {
 	    try (
 	    		InputStream in = Main.class.getResourceAsStream(resourcePath);
 	    		BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8), BUFFER_SIZE);
+	    		OutputStream out = new FileOutputStream("target/output-model.ttl");
 	    		) {
 	        m.read(br, base, readLang);
+	        m.setNsPrefix(prefix, uri);
+		    m.write(out, writeLang);
 	    }
-	    m.setNsPrefix(prefix, uri);
-	    m.write(System.out, writeLang);
 	}
 }
